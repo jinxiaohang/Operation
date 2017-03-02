@@ -20,8 +20,8 @@ public class Main {
       //控制产生题数
         while(i<N){
         	//随机产生一种题型
-            //int num = (int)(Math.random()*3);
-            int num = 7;
+            int num = (int)(Math.random()*7);
+            //int num = 7;
             i++;
             switch (num){
             	case 0://整数加法
@@ -155,7 +155,7 @@ public class Main {
                 break;
             }
         }
-        System.out.print(fz1+"/"+fm1+"+"+fz2+"/"+fm2+"=");
+        System.out.print("("+fz1+"/"+fm1+")"+"+"+"("+fz2+"/"+fm2+")"+"=");
         int tempfm = fm1*fm2;
         int tempfz = fz1*fm2+fz2*fm1;
         int max = tempfm;
@@ -200,7 +200,7 @@ public class Main {
                 break;
             }
         }
-        System.out.print(fz1+"/"+fm1+"-"+fz2+"/"+fm2+"=");
+        System.out.print("("+fz1+"/"+fm1+")"+"-"+"("+fz2+"/"+fm2+")"+"=");
         int tempfm = fm1*fm2;
         int tempfz = fz1*fm2-fz2*fm1;
         int max = tempfm;
@@ -259,7 +259,7 @@ public class Main {
                 break;
             }
         }
-		System.out.print(fz1+"/"+fm1+"*"+fz2+"/"+fm2+"=");
+		System.out.print("("+fz1+"/"+fm1+")"+"*"+"("+fz2+"/"+fm2+")"+"=");
         int tempfm = fm1*fm2;
         int tempfz = fz1*fz2;
         int max = tempfm;
@@ -302,7 +302,7 @@ public class Main {
                 break;
             }
         }
-		System.out.print(fz1+"/"+fm1+" / "+fz2+"/"+fm2+"=");
+		System.out.print("("+fz1+"/"+fm1+")"+" / "+"("+fz2+"/"+fm2+")"+"=");
         int tempfm = fm1*fz2;
         int tempfz = fz1*fm2;
         int max = tempfm;
