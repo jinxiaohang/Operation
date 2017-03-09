@@ -2,6 +2,8 @@ package com;
 
 import java.util.Scanner;
 
+import static java.lang.Integer.*;
+
 public class Main {
 
 	@SuppressWarnings("resource")
@@ -21,7 +23,7 @@ public class Main {
         while(i<N){
         	//随机产生一种题型
             int num = (int)(Math.random()*7);
-            //int num = 7;
+            //int num = 4;
             i++;
             switch (num){
             	case 0://整数加法
@@ -37,12 +39,11 @@ public class Main {
             		else{F++;}
             		break;
             	case 3://整数除法
-            		if(it.div()){T++;}
-            		else{F++;}
-            		break;
+                    if (!it.div()) {F++;} else {T++;}
+                    break;
             	case 4://真分数加法
             		if(it.tadd()){T++;}
-            		else{F++;}
+            		else F++;
             		break;
             	case 5://真分数减法
             		if(it.tsub()){T++;}
@@ -69,18 +70,43 @@ public class Main {
 	private boolean div() {
 		int a = (int)(Math.random()*10)+1;
         int b = (int)(Math.random()*10)+1;
-        int d1 = a/b;
+        String d1 = a+"/"+b;
 
-        System.out.print(a+" / "+b+"=");
+        d1=Economize(d1);
+        Double d2= (double)a/b;
+        Integer d3=a/b;
+        System.out.print(a+" ÷ "+b+"=");
         Scanner input=new Scanner(System.in);
-		int c1 = (int) input.nextFloat();
-        if(c1==d1){
-            System.out.println("ture");
-            return true;
-        }else{
-            System.out.println("false");
-            return false;
+		String c1 =  input.next();
+
+		if(c1.indexOf('/')!=-1){
+            c1=Economize(c1);
+            if(c1.equals(d1)){
+                System.out.println("true");
+                return true;
+            }else{
+                System.out.println("false");
+                return false;
+            }
         }
+        else if(c1.indexOf('.')!=-1){
+            if(c1.equals(d2.toString())){
+                System.out.println("true");
+                return true;
+            }else{
+                System.out.println("false");
+                return false;
+            }
+        }else{
+            if(c1.equals(d3.toString())){
+                System.out.println("true");
+                return true;
+            }else{
+                System.out.println("false");
+                return false;
+            }
+        }
+
 	}
 
 
@@ -155,11 +181,19 @@ public class Main {
                 break;
             }
         }
-        System.out.print("("+fz1+"/"+fm1+")"+"+"+"("+fz2+"/"+fm2+")"+"=");
+        String fzm1=fz1+"/"+fm1;
+        String fzm2=fz2+"/"+fm2;
+        fzm1=Economize(fzm1);
+        fzm2=Economize(fzm2);
+
+        System.out.print("("+fzm1+")"+"+"+"("+fzm2+")"+"=");
         int tempfm = fm1*fm2;
         int tempfz = fz1*fm2+fz2*fm1;
         int max = tempfm;
-        String answer;
+        String answer="";
+        String answer1="";
+        Double answer2=0.0;
+
 		if(tempfm<tempfz){
             max=getmax(tempfz,tempfm);
         }else if(tempfm>tempfz){
@@ -173,25 +207,46 @@ public class Main {
             Integer s=tempfz/tempfm;//结果为整数
             answer=s.toString();
         }else{
-            answer=tempfz+"/"+tempfm;
+            answer1=tempfz+"/"+tempfm;
+            answer2=(double) tempfz/tempfm;
         }
 
         Scanner input=new Scanner(System.in);
 		String reanswer = input.next();
 
-        if(reanswer.equals(answer)){
-            System.out.println("ture");
-            return true;
+        if(reanswer.indexOf('/')!=-1){
+            reanswer=Economize(reanswer);
+            if(reanswer.equals(answer1)){
+                System.out.println("true");
+                return true;
+            }else{
+                System.out.println("false");
+                return false;
+            }
+        }
+        else if(reanswer.indexOf('.')!=-1){
+            if(reanswer.equals(answer2.toString())){
+                System.out.println("true");
+                return true;
+            }else{
+                System.out.println("false");
+                return false;
+            }
         }else{
-            System.out.println("false");
-            return false;
+            if(reanswer.equals(answer)){
+                System.out.println("true");
+                return true;
+            }else{
+                System.out.println("false");
+                return false;
+            }
         }
 	}
 	
 	
 	private boolean tsub() {
-		int fz1,fm1,fz2,fm2;
-		while(true){
+        int fz1,fm1,fz2,fm2;
+        while(true){
             fz1=(int)(Math.random()*10)+1;
             fm1=(int)(Math.random()*10)+1;
             fz2=(int)(Math.random()*10)+1;
@@ -200,70 +255,19 @@ public class Main {
                 break;
             }
         }
-        System.out.print("("+fz1+"/"+fm1+")"+"-"+"("+fz2+"/"+fm2+")"+"=");
+        String fzm1=fz1+"/"+fm1;
+        String fzm2=fz2+"/"+fm2;
+        fzm1=Economize(fzm1);
+        fzm2=Economize(fzm2);
+
+        System.out.print("("+fzm1+")"+"-"+"("+fzm2+")"+"=");
         int tempfm = fm1*fm2;
         int tempfz = fz1*fm2-fz2*fm1;
         int max = tempfm;
-        String answer;
-        if(tempfz!=0){
-            if(Math.abs(tempfm)<Math.abs(tempfz)){
-                max=getmax(Math.abs(tempfz),Math.abs(tempfm));
-            }else if(Math.abs(tempfm)>Math.abs(tempfz)){
-                max=getmax(Math.abs(tempfm),Math.abs(tempfz));
-            }else{
-                answer="1";
-            }
-            tempfz=tempfz/max;
-            tempfm=tempfm/max;
-            if(0==tempfz%tempfm){
-            	Integer s=tempfz/tempfm;//结果为整数
-            	answer=s.toString();
-            }else{
-            	answer=tempfz+"/"+tempfm;
-            }
+        String answer="";
+        String answer1="";
+        Double answer2=0.0;
 
-            Scanner input=new Scanner(System.in);
-            String reanswer = input.next();
-
-            if(reanswer.equals(answer)){
-            	System.out.println("ture");
-            	return true;
-            }else{
-            	System.out.println("false");
-            	return false;
-            }
-        }else{
-        	answer="0";
-        	Scanner input=new Scanner(System.in);
-            String reanswer = input.next();
-
-            if(reanswer.equals(answer)){
-            	System.out.println("ture");
-            	return true;
-            }else{
-            	System.out.println("false");
-            	return false;
-            }
-        }
-           
-	}
-	
-	private boolean tmul() {
-		int fz1,fm1,fz2,fm2;
-		while(true){
-            fz1=(int)(Math.random()*10)+1;
-            fm1=(int)(Math.random()*10)+1;
-            fz2=(int)(Math.random()*10)+1;
-            fm2=(int)(Math.random()*10)+1;
-            if(fz1<fm1&&fz2<fm2){
-                break;
-            }
-        }
-		System.out.print("("+fz1+"/"+fm1+")"+"*"+"("+fz2+"/"+fm2+")"+"=");
-        int tempfm = fm1*fm2;
-        int tempfz = fz1*fz2;
-        int max = tempfm;
-        String answer;
         if(tempfm<tempfz){
             max=getmax(tempfz,tempfm);
         }else if(tempfm>tempfz){
@@ -277,23 +281,118 @@ public class Main {
             Integer s=tempfz/tempfm;//结果为整数
             answer=s.toString();
         }else{
-            answer=tempfz+"/"+tempfm;
+            answer1=tempfz+"/"+tempfm;
+            answer2=(double) tempfz/tempfm;
         }
+
         Scanner input=new Scanner(System.in);
         String reanswer = input.next();
 
-        if(reanswer.equals(answer)){
-        	System.out.println("ture");
-        	return true;
+        if(reanswer.indexOf('/')!=-1){
+            reanswer=Economize(reanswer);
+            if(reanswer.equals(answer1)){
+                System.out.println("true");
+                return true;
+            }else{
+                System.out.println("false");
+                return false;
+            }
+        }
+        else if(reanswer.indexOf('.')!=-1){
+            if(reanswer.equals(answer2.toString())){
+                System.out.println("true");
+                return true;
+            }else{
+                System.out.println("false");
+                return false;
+            }
         }else{
-        	System.out.println("false");
-        	return false;
+            if(reanswer.equals(answer)){
+                System.out.println("true");
+                return true;
+            }else{
+                System.out.println("false");
+                return false;
+            }
+        }
+	}
+	
+	private boolean tmul() {
+        int fz1,fm1,fz2,fm2;
+        while(true){
+            fz1=(int)(Math.random()*10)+1;
+            fm1=(int)(Math.random()*10)+1;
+            fz2=(int)(Math.random()*10)+1;
+            fm2=(int)(Math.random()*10)+1;
+            if(fz1<fm1&&fz2<fm2){
+                break;
+            }
+        }
+        String fzm1=fz1+"/"+fm1;
+        String fzm2=fz2+"/"+fm2;
+        fzm1=Economize(fzm1);
+        fzm2=Economize(fzm2);
+
+        System.out.print("("+fzm1+")"+"*"+"("+fzm2+")"+"=");
+        int tempfm = fm1*fm2;
+        int tempfz = fz1*fz2;
+        int max = tempfm;
+        String answer="";
+        String answer1="";
+        Double answer2=0.0;
+
+        if(tempfm<tempfz){
+            max=getmax(tempfz,tempfm);
+        }else if(tempfm>tempfz){
+            max=getmax(tempfm,tempfz);
+        }else{
+            answer="1";
+        }
+        tempfz=tempfz/max;
+        tempfm=tempfm/max;
+        if(0==tempfz%tempfm){
+            Integer s=tempfz/tempfm;//结果为整数
+            answer=s.toString();
+        }else{
+            answer1=tempfz+"/"+tempfm;
+            answer2=(double) tempfz/tempfm;
+        }
+
+        Scanner input=new Scanner(System.in);
+        String reanswer = input.next();
+
+        if(reanswer.indexOf('/')!=-1){
+            reanswer=Economize(reanswer);
+            if(reanswer.equals(answer1)){
+                System.out.println("true");
+                return true;
+            }else{
+                System.out.println("false");
+                return false;
+            }
+        }
+        else if(reanswer.indexOf('.')!=-1){
+            if(reanswer.equals(answer2.toString())){
+                System.out.println("true");
+                return true;
+            }else{
+                System.out.println("false");
+                return false;
+            }
+        }else{
+            if(reanswer.equals(answer)){
+                System.out.println("true");
+                return true;
+            }else{
+                System.out.println("false");
+                return false;
+            }
         }
 	}
 
 	private boolean tdiv() {
-		int fz1,fm1,fz2,fm2;
-		while(true){
+        int fz1,fm1,fz2,fm2;
+        while(true){
             fz1=(int)(Math.random()*10)+1;
             fm1=(int)(Math.random()*10)+1;
             fz2=(int)(Math.random()*10)+1;
@@ -302,11 +401,19 @@ public class Main {
                 break;
             }
         }
-		System.out.print("("+fz1+"/"+fm1+")"+" / "+"("+fz2+"/"+fm2+")"+"=");
+        String fzm1=fz1+"/"+fm1;
+        String fzm2=fz2+"/"+fm2;
+        fzm1=Economize(fzm1);
+        fzm2=Economize(fzm2);
+
+        System.out.print("("+fzm1+")"+"÷"+"("+fzm2+")"+"=");
         int tempfm = fm1*fz2;
         int tempfz = fz1*fm2;
         int max = tempfm;
-        String answer;
+        String answer="";
+        String answer1="";
+        Double answer2=0.0;
+
         if(tempfm<tempfz){
             max=getmax(tempfz,tempfm);
         }else if(tempfm>tempfz){
@@ -320,23 +427,45 @@ public class Main {
             Integer s=tempfz/tempfm;//结果为整数
             answer=s.toString();
         }else{
-            answer=tempfz+"/"+tempfm;
+            answer1=tempfz+"/"+tempfm;
+            answer2=(double) tempfz/tempfm;
         }
+
         Scanner input=new Scanner(System.in);
         String reanswer = input.next();
 
-        if(reanswer.equals(answer)){
-        	System.out.println("ture");
-        	return true;
+        if(reanswer.indexOf('/')!=-1){
+            reanswer=Economize(reanswer);
+            if(reanswer.equals(answer1)){
+                System.out.println("true");
+                return true;
+            }else{
+                System.out.println("false");
+                return false;
+            }
+        }
+        else if(reanswer.indexOf('.')!=-1){
+            if(reanswer.equals(answer2.toString())){
+                System.out.println("true");
+                return true;
+            }else{
+                System.out.println("false");
+                return false;
+            }
         }else{
-        	System.out.println("false");
-        	return false;
+            if(reanswer.equals(answer)){
+                System.out.println("true");
+                return true;
+            }else{
+                System.out.println("false");
+                return false;
+            }
         }
 	}
 
 	
 	//获得最大公因数的方法
-    public static int getmax(int divisor,int dividend) {
+    private static int getmax(int divisor, int dividend) {
         int remainder=divisor%dividend;
         boolean i=true;
         if(remainder==0){
@@ -352,4 +481,28 @@ public class Main {
         }
         return dividend;
     }
+
+    private static String Economize(String ch){
+	    int sign=ch.indexOf('/');
+
+        Integer fz=1;Integer fm=1;
+        String fzz = ch.substring(0,sign);
+        String fmm = ch.substring(sign+1);
+        try {
+
+            fz = Integer.parseInt(fzz);
+            fm = Integer.parseInt(fmm);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        int max=getmax(fz,fm);
+
+	    String Newch;
+        Newch = (fz/max)+"/"+(fm/max);
+
+        return Newch;
+
+    }
+
 }
+
