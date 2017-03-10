@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3733d8ed-5f6f-4c08-a2df-4f8c80fe061c" name="Default" comment="修复:N/0等一些非法情况下程序继续运行，">
+    <list default="true" id="3733d8ed-5f6f-4c08-a2df-4f8c80fe061c" name="Default" comment="修复:N/0、%、N//N等一些非法输入情况下程序继续运行（对输入直接判错）">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/Main.java" afterPath="$PROJECT_DIR$/src/com/Main.java" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,15 +30,10 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="344">
-              <caret line="107" column="9" lean-forward="true" selection-start-line="107" selection-start-column="9" selection-end-line="107" selection-end-column="9" />
+            <state relative-caret-position="783">
+              <caret line="29" column="38" lean-forward="true" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#99#128#0" expanded="true" />
-                <element signature="e#1646#1675#0" expanded="true" />
-                <element signature="e#2810#2839#0" expanded="true" />
-                <element signature="e#3260#3289#0" expanded="true" />
-                <element signature="e#3712#3741#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -564,7 +560,8 @@
       <workItem from="1488967872740" duration="2796000" />
       <workItem from="1489055202844" duration="2165000" />
       <workItem from="1489070406699" duration="179000" />
-      <workItem from="1489126667605" duration="1237000" />
+      <workItem from="1489126667605" duration="1454000" />
+      <workItem from="1489128542052" duration="903000" />
     </task>
     <task id="LOCAL-00001" summary="修复：真分数计算时用户无法判断运算先后顺序 #8">
       <created>1488417497469</created>
@@ -594,11 +591,18 @@
       <option name="project" value="LOCAL" />
       <updated>1489127840165</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="修复:N/0、%、N//N等一些非法输入情况下程序继续运行（对输入直接判错）">
+      <created>1489128058912</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1489128058912</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15001000" />
+    <option name="totallyTimeSpent" value="16121000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
@@ -688,19 +692,20 @@
     <MESSAGE value="修复：真分数计算时用户无法判断运算先后顺序 #8" />
     <MESSAGE value="修复:小数与分数能够同时判断" />
     <MESSAGE value="修复:N/0等一些非法情况下程序继续运行，" />
-    <option name="LAST_COMMIT_MESSAGE" value="修复:N/0等一些非法情况下程序继续运行，" />
+    <MESSAGE value="修复:N/0、%、N//N等一些非法输入情况下程序继续运行（对输入直接判错）" />
+    <option name="LAST_COMMIT_MESSAGE" value="修复:N/0、%、N//N等一些非法输入情况下程序继续运行（对输入直接判错）" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/Main.java</url>
-          <line>469</line>
+          <line>498</line>
           <properties />
           <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="19" />
+      <option name="time" value="20" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -715,11 +720,6 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#99#128#0" expanded="true" />
-            <element signature="e#1646#1675#0" expanded="true" />
-            <element signature="e#2810#2839#0" expanded="true" />
-            <element signature="e#3260#3289#0" expanded="true" />
-            <element signature="e#3712#3741#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -730,11 +730,6 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#99#128#0" expanded="true" />
-            <element signature="e#1646#1675#0" expanded="true" />
-            <element signature="e#2810#2839#0" expanded="true" />
-            <element signature="e#3260#3289#0" expanded="true" />
-            <element signature="e#3712#3741#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -745,11 +740,16 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#99#128#0" expanded="true" />
-            <element signature="e#1646#1675#0" expanded="true" />
-            <element signature="e#2810#2839#0" expanded="true" />
-            <element signature="e#3260#3289#0" expanded="true" />
-            <element signature="e#3712#3741#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -767,11 +767,6 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#99#128#0" expanded="true" />
-            <element signature="e#1646#1675#0" expanded="true" />
-            <element signature="e#2810#2839#0" expanded="true" />
-            <element signature="e#3260#3289#0" expanded="true" />
-            <element signature="e#3712#3741#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -782,11 +777,6 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#99#128#0" expanded="true" />
-            <element signature="e#1646#1675#0" expanded="true" />
-            <element signature="e#2810#2839#0" expanded="true" />
-            <element signature="e#3260#3289#0" expanded="true" />
-            <element signature="e#3712#3741#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -797,11 +787,6 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#99#128#0" expanded="true" />
-            <element signature="e#1646#1675#0" expanded="true" />
-            <element signature="e#2810#2839#0" expanded="true" />
-            <element signature="e#3260#3289#0" expanded="true" />
-            <element signature="e#3712#3741#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -812,11 +797,6 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#99#128#0" expanded="true" />
-            <element signature="e#1646#1675#0" expanded="true" />
-            <element signature="e#2810#2839#0" expanded="true" />
-            <element signature="e#3260#3289#0" expanded="true" />
-            <element signature="e#3712#3741#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -827,11 +807,6 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#99#128#0" expanded="true" />
-            <element signature="e#1646#1675#0" expanded="true" />
-            <element signature="e#2810#2839#0" expanded="true" />
-            <element signature="e#3260#3289#0" expanded="true" />
-            <element signature="e#3712#3741#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -859,15 +834,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="107" column="9" lean-forward="true" selection-start-line="107" selection-start-column="9" selection-end-line="107" selection-end-column="9" />
+        <state relative-caret-position="783">
+          <caret line="29" column="38" lean-forward="true" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#99#128#0" expanded="true" />
-            <element signature="e#1646#1675#0" expanded="true" />
-            <element signature="e#2810#2839#0" expanded="true" />
-            <element signature="e#3260#3289#0" expanded="true" />
-            <element signature="e#3712#3741#0" expanded="true" />
           </folding>
         </state>
       </provider>

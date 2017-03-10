@@ -22,8 +22,8 @@ public class Main {
       //控制产生题数
         while(i<N){
         	//随机产生一种题型
-            //int num = (int)(Math.random()*7);
-            int num = 6;
+            int num = (int)(Math.random()*7);
+            //int num = 2;
             i++;
             switch (num){
             	case 0://整数加法
@@ -88,8 +88,10 @@ public class Main {
                 System.out.println("false");
                 return false;
             }
-        }
-        else if(c1.indexOf('.')!=-1){
+        }else if(c1.indexOf('q')!=-1){
+            System.exit(0);
+            return false;
+        } else if(c1.indexOf('.')!=-1){
             if(c1.equals(d2.toString())){
                 System.out.println("true");
                 return true;
@@ -123,14 +125,21 @@ public class Main {
 
         System.out.print(a+"+"+b+"=");
         Scanner input=new Scanner(System.in);
-		int c = input.nextInt();
-        if(c==d){
-            System.out.println("ture");
-            return true;
-        }else{
-            System.out.println("false");
+        String ch=input.next();
+        if(ch.indexOf('q')!=-1){
+            System.exit(0);
             return false;
+        }else{
+            int c = Integer.parseInt(ch);
+            if(c==d){
+                System.out.println("ture");
+                return true;
+            }else{
+                System.out.println("false");
+                return false;
+            }
         }
+
 	}
 	
 	@SuppressWarnings("resource")
@@ -141,13 +150,19 @@ public class Main {
 
         System.out.print(a+"-"+b+"=");
         Scanner input=new Scanner(System.in);
-		int c = input.nextInt();
-        if(c==d){
-            System.out.println("ture");
-            return true;
-        }else{
-            System.out.println("false");
+        String ch=input.next();
+        if(ch.indexOf('q')!=-1){
+            System.exit(0);
             return false;
+        }else{
+            int c = Integer.parseInt(ch);
+            if(c==d){
+                System.out.println("ture");
+                return true;
+            }else{
+                System.out.println("false");
+                return false;
+            }
         }
 	}
 	
@@ -160,13 +175,19 @@ public class Main {
 
         System.out.print(a+"*"+b+"=");
         Scanner input=new Scanner(System.in);
-		int c = input.nextInt();
-        if(c==d){
-            System.out.println("ture");
-            return true;
-        }else{
-            System.out.println("false");
+        String ch=input.next();
+        if(ch.indexOf('q')!=-1){
+            System.exit(0);
             return false;
+        }else{
+            int c = Integer.parseInt(ch);
+            if(c==d){
+                System.out.println("ture");
+                return true;
+            }else{
+                System.out.println("false");
+                return false;
+            }
         }
 	}
 	
@@ -223,8 +244,10 @@ public class Main {
                 System.out.println("false");
                 return false;
             }
-        }
-        else if(reanswer.indexOf('.')!=-1){
+        }else if(reanswer.indexOf('q')!=-1){
+            System.exit(0);
+            return false;
+        }else if(reanswer.indexOf('.')!=-1){
             if(reanswer.equals(answer2.toString())){
                 System.out.println("true");
                 return true;
@@ -297,8 +320,10 @@ public class Main {
                 System.out.println("false");
                 return false;
             }
-        }
-        else if(reanswer.indexOf('.')!=-1){
+        }else if(reanswer.indexOf('q')!=-1){
+            System.exit(0);
+            return false;
+        }else if(reanswer.indexOf('.')!=-1){
             if(reanswer.equals(answer2.toString())){
                 System.out.println("true");
                 return true;
@@ -370,8 +395,10 @@ public class Main {
                 System.out.println("false");
                 return false;
             }
-        }
-        else if(reanswer.indexOf('.')!=-1){
+        }else if(reanswer.indexOf('q')!=-1){
+            System.exit(0);
+            return false;
+        }else if(reanswer.indexOf('.')!=-1){
             if(reanswer.equals(answer2.toString())){
                 System.out.println("true");
                 return true;
@@ -443,8 +470,10 @@ public class Main {
                 System.out.println("false");
                 return false;
             }
-        }
-        else if(reanswer.indexOf('.')!=-1){
+        }else if(reanswer.indexOf('q')!=-1){
+            System.exit(0);
+            return false;
+        }else if(reanswer.indexOf('.')!=-1){
             if(reanswer.equals(answer2.toString())){
                 System.out.println("true");
                 return true;
