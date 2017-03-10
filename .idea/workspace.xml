@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3733d8ed-5f6f-4c08-a2df-4f8c80fe061c" name="Default" comment="修复:小数与分数能够同时判断">
+    <list default="true" id="3733d8ed-5f6f-4c08-a2df-4f8c80fe061c" name="Default" comment="修复:N/0等一些非法情况下程序继续运行，">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/Main.java" afterPath="$PROJECT_DIR$/src/com/Main.java" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,8 +29,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="560">
-              <caret line="505" column="9" lean-forward="true" selection-start-line="505" selection-start-column="9" selection-end-line="505" selection-end-column="9" />
+            <state relative-caret-position="344">
+              <caret line="107" column="9" lean-forward="true" selection-start-line="107" selection-start-column="9" selection-end-line="107" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#99#128#0" expanded="true" />
@@ -565,7 +564,7 @@
       <workItem from="1488967872740" duration="2796000" />
       <workItem from="1489055202844" duration="2165000" />
       <workItem from="1489070406699" duration="179000" />
-      <workItem from="1489126667605" duration="1086000" />
+      <workItem from="1489126667605" duration="1237000" />
     </task>
     <task id="LOCAL-00001" summary="修复：真分数计算时用户无法判断运算先后顺序 #8">
       <created>1488417497469</created>
@@ -588,11 +587,18 @@
       <option name="project" value="LOCAL" />
       <updated>1489055826788</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="修复:N/0等一些非法情况下程序继续运行，">
+      <created>1489127840165</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1489127840165</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14850000" />
+    <option name="totallyTimeSpent" value="15001000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
@@ -681,7 +687,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="修复：真分数计算时用户无法判断运算先后顺序 #8" />
     <MESSAGE value="修复:小数与分数能够同时判断" />
-    <option name="LAST_COMMIT_MESSAGE" value="修复:小数与分数能够同时判断" />
+    <MESSAGE value="修复:N/0等一些非法情况下程序继续运行，" />
+    <option name="LAST_COMMIT_MESSAGE" value="修复:N/0等一些非法情况下程序继续运行，" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -852,8 +859,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="505" column="9" lean-forward="true" selection-start-line="505" selection-start-column="9" selection-end-line="505" selection-end-column="9" />
+        <state relative-caret-position="344">
+          <caret line="107" column="9" lean-forward="true" selection-start-line="107" selection-start-column="9" selection-end-line="107" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#99#128#0" expanded="true" />
