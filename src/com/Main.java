@@ -22,8 +22,8 @@ public class Main {
       //控制产生题数
         while(i<N){
         	//随机产生一种题型
-            int num = (int)(Math.random()*7);
-            //int num = 4;
+            //int num = (int)(Math.random()*7);
+            int num = 6;
             i++;
             switch (num){
             	case 0://整数加法
@@ -466,19 +466,25 @@ public class Main {
 	
 	//获得最大公因数的方法
     private static int getmax(int divisor, int dividend) {
-        int remainder=divisor%dividend;
-        boolean i=true;
-        if(remainder==0){
-            i=false;
-        }
-        while(i){
-            divisor=dividend;
-            dividend=remainder;
-            remainder=divisor%dividend;
+        try{
+            int remainder=divisor%dividend;
+            boolean i=true;
             if(remainder==0){
                 i=false;
             }
+            while(i){
+                divisor=dividend;
+                dividend=remainder;
+                remainder=divisor%dividend;
+                if(remainder==0){
+                    i=false;
+                }
+            }
+
+        }catch (NumberFormatException e){
+            e.printStackTrace();
         }
+
         return dividend;
     }
 
@@ -489,9 +495,12 @@ public class Main {
         String fzz = ch.substring(0,sign);
         String fmm = ch.substring(sign+1);
         try {
-
             fz = Integer.parseInt(fzz);
             fm = Integer.parseInt(fmm);
+            if(fm==0){
+                System.out.println("输入分母为零");
+                return "***";
+            }
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }

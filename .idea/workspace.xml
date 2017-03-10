@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3733d8ed-5f6f-4c08-a2df-4f8c80fe061c" name="Default" comment="修复：真分数计算时用户无法判断运算先后顺序 #8">
+    <list default="true" id="3733d8ed-5f6f-4c08-a2df-4f8c80fe061c" name="Default" comment="修复:小数与分数能够同时判断">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/Main.java" afterPath="$PROJECT_DIR$/src/com/Main.java" />
     </list>
@@ -30,10 +30,15 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="27">
-              <caret line="100" column="41" lean-forward="true" selection-start-line="100" selection-start-column="41" selection-end-line="100" selection-end-column="41" />
+            <state relative-caret-position="560">
+              <caret line="505" column="9" lean-forward="true" selection-start-line="505" selection-start-column="9" selection-end-line="505" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#99#128#0" expanded="true" />
+                <element signature="e#1646#1675#0" expanded="true" />
+                <element signature="e#2810#2839#0" expanded="true" />
+                <element signature="e#3260#3289#0" expanded="true" />
+                <element signature="e#3712#3741#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -72,7 +77,7 @@
     <option name="height" value="1050" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
+    <navigator proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -85,43 +90,7 @@
       <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Operation" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Operation" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Operation" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Operation" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scratches" />
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -594,7 +563,9 @@
       <workItem from="1488790842243" duration="1036000" />
       <workItem from="1488803390974" duration="4846000" />
       <workItem from="1488967872740" duration="2796000" />
-      <workItem from="1489055202844" duration="559000" />
+      <workItem from="1489055202844" duration="2165000" />
+      <workItem from="1489070406699" duration="179000" />
+      <workItem from="1489126667605" duration="1086000" />
     </task>
     <task id="LOCAL-00001" summary="修复：真分数计算时用户无法判断运算先后顺序 #8">
       <created>1488417497469</created>
@@ -610,11 +581,18 @@
       <option name="project" value="LOCAL" />
       <updated>1488417597611</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="修复:小数与分数能够同时判断">
+      <created>1489055826788</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1489055826788</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11979000" />
+    <option name="totallyTimeSpent" value="14850000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
@@ -702,37 +680,20 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="修复：真分数计算时用户无法判断运算先后顺序 #8" />
-    <option name="LAST_COMMIT_MESSAGE" value="修复：真分数计算时用户无法判断运算先后顺序 #8" />
+    <MESSAGE value="修复:小数与分数能够同时判断" />
+    <option name="LAST_COMMIT_MESSAGE" value="修复:小数与分数能够同时判断" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
+        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/Main.java</url>
-          <line>172</line>
-          <properties class="com.Main" method="tadd" />
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/com/Main.java</url>
-          <line>392</line>
-          <properties class="com.Main" method="tdiv" />
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/com/Main.java</url>
-          <line>319</line>
-          <properties class="com.Main" method="tmul" />
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/com/Main.java</url>
-          <line>246</line>
-          <properties class="com.Main" method="tsub" />
-          <option name="timeStamp" value="14" />
+          <line>469</line>
+          <properties />
+          <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="15" />
+      <option name="time" value="19" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -747,6 +708,41 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#99#128#0" expanded="true" />
+            <element signature="e#1646#1675#0" expanded="true" />
+            <element signature="e#2810#2839#0" expanded="true" />
+            <element signature="e#3260#3289#0" expanded="true" />
+            <element signature="e#3712#3741#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#99#128#0" expanded="true" />
+            <element signature="e#1646#1675#0" expanded="true" />
+            <element signature="e#2810#2839#0" expanded="true" />
+            <element signature="e#3260#3289#0" expanded="true" />
+            <element signature="e#3712#3741#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#99#128#0" expanded="true" />
+            <element signature="e#1646#1675#0" expanded="true" />
+            <element signature="e#2810#2839#0" expanded="true" />
+            <element signature="e#3260#3289#0" expanded="true" />
+            <element signature="e#3712#3741#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -755,8 +751,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2376">
           <caret line="88" column="0" lean-forward="false" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#2896#2897#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#99#128#0" expanded="true" />
+            <element signature="e#1646#1675#0" expanded="true" />
+            <element signature="e#2810#2839#0" expanded="true" />
+            <element signature="e#3260#3289#0" expanded="true" />
+            <element signature="e#3712#3741#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -767,6 +775,11 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#99#128#0" expanded="true" />
+            <element signature="e#1646#1675#0" expanded="true" />
+            <element signature="e#2810#2839#0" expanded="true" />
+            <element signature="e#3260#3289#0" expanded="true" />
+            <element signature="e#3712#3741#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -777,6 +790,11 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#99#128#0" expanded="true" />
+            <element signature="e#1646#1675#0" expanded="true" />
+            <element signature="e#2810#2839#0" expanded="true" />
+            <element signature="e#3260#3289#0" expanded="true" />
+            <element signature="e#3712#3741#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -787,6 +805,11 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#99#128#0" expanded="true" />
+            <element signature="e#1646#1675#0" expanded="true" />
+            <element signature="e#2810#2839#0" expanded="true" />
+            <element signature="e#3260#3289#0" expanded="true" />
+            <element signature="e#3712#3741#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -797,16 +820,11 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#99#128#0" expanded="true" />
+            <element signature="e#1646#1675#0" expanded="true" />
+            <element signature="e#2810#2839#0" expanded="true" />
+            <element signature="e#3260#3289#0" expanded="true" />
+            <element signature="e#3712#3741#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -829,18 +847,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1755">
           <caret line="88" column="0" lean-forward="false" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
-          <folding>
-            <element signature="e#2896#2897#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="100" column="41" lean-forward="true" selection-start-line="100" selection-start-column="41" selection-end-line="100" selection-end-column="41" />
+        <state relative-caret-position="560">
+          <caret line="505" column="9" lean-forward="true" selection-start-line="505" selection-start-column="9" selection-end-line="505" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#99#128#0" expanded="true" />
+            <element signature="e#1646#1675#0" expanded="true" />
+            <element signature="e#2810#2839#0" expanded="true" />
+            <element signature="e#3260#3289#0" expanded="true" />
+            <element signature="e#3712#3741#0" expanded="true" />
           </folding>
         </state>
       </provider>
