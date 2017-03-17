@@ -1,546 +1,293 @@
 package com;
-
+import java.util.Random;
 import java.util.Scanner;
-
-import static java.lang.Integer.*;
+import java.util.Stack;
 
 public class Main {
+    public static void main(String[] args) {
+        Statistics();
+//        å•ç‹¬æµ‹è¯•ä½¿ç”¨
+//        StringBuffer suffix;
+//        suffix=Suffix(Equation());
+//        String answer=Calculate(suffix);
+//        Judge(answer);
+    }
 
-	@SuppressWarnings("resource")
-	public static void main(String[] args) {
-		
-		int N=5;//½ÓÊÕÓÃ»§ÊäÈëÌâÊı
-		int i=0;//¿ØÖÆÑ­»·
-		int T=0,F=0;//¼ÇÂ¼ÕıÈ·£¬´íÎóÌâÊı
-		
-		Main it=new Main();
-		
-		Scanner input=new Scanner(System.in);
-        System.out.println("Please enter the number of questions you want to do");
-        N=input.nextInt();
-        
-      //¿ØÖÆ²úÉúÌâÊı
-        while(i<N){
-        	//Ëæ»ú²úÉúÒ»ÖÖÌâĞÍ
-            int num = (int)(Math.random()*7);
-            //int num = 2;
-            i++;
-            switch (num){
-            	case 0://ÕûÊı¼Ó·¨
-            		if(it.add()){T++;}
-            		else{F++;}
-            		break;
-            	case 1://ÕûÊı¼õ·¨
-            		if(it.sub()){T++;}
-            		else{F++;}
-            		break;
-            	case 2://ÕûÊı³Ë·¨
-            		if(it.mul()){T++;}
-            		else{F++;}
-            		break;
-            	case 3://ÕûÊı³ı·¨
-                    if (!it.div()) {F++;} else {T++;}
+    //é¢˜æ•°ç»Ÿè®¡å‡½æ•°
+    public static void Statistics(){
+        int Tnumber=0;
+        int Fnumber=0;
+        Scanner input=new Scanner(System.in);
+        System.out.print("è¯·è¾“å…¥æ‚¨æƒ³è¦åšçš„é¢˜æ•°ï¼ŒæŒ‰quitå¯é€€å‡ºï¼š");
+        String StringQnumber=input.next();
+        while (true){
+            if (StringQnumber.equals("quit")){
+                System.out.println("æ„Ÿè°¢æ‚¨çš„ä½¿ç”¨ï¼");
+                System.exit(0);
+            }else if(StringQnumber.matches(".*[0-9]+.*")){
+                Integer Qnumber=Integer.parseInt(StringQnumber);
+                while (Qnumber>0){
+                    StringBuffer suffix;
+                    suffix=Suffix(Equation());
+                    String answer=Calculate(suffix);
+                    if (Judge(answer)){
+                        Tnumber++;
+                    }else {
+                        Fnumber++;
+                    }
+                    Qnumber--;
+                }
+                break;
+            }else {
+                System.out.print("æ‚¨è¾“å…¥çš„æ˜¯ä»€ä¹ˆæ„æ€ï¼Œæˆ‘çœ‹ä¸æ‡‚ï¼Œè¯·å†æ¬¡è¾“å…¥ï¼š");
+                StringQnumber=input.next();
+            }
+        }
+
+
+        System.out.println("æ­£ç¡®é¢˜æ•°ï¼š"+Tnumber);
+        System.out.println("é”™è¯¯é¢˜æ•°ï¼š"+Fnumber);
+        Double accuracy=(double)Tnumber/(Tnumber+Fnumber)*100;
+        System.out.println("æ­£ç¡®ç‡ä¸º"+accuracy+"%");
+    }
+
+    //ç”Ÿæˆå››åˆ™æ··åˆè¿ç®—
+    public static StringBuffer Equation(){
+        Random random=new Random();
+        char [] Operator={'+','-','Ã—','Ã·'};
+        Integer num1;
+        Integer num2;
+        Integer num3;
+        Integer num4;
+        int operator;
+        num1=random.nextInt(10)+1;
+        num2=random.nextInt(10)+1;
+        num3=random.nextInt(10)+1;
+        num4=random.nextInt(10)+1;
+        operator=random.nextInt(4);
+
+        StringBuffer expression=new StringBuffer(num1.toString()+" "+Operator[operator]+" "+num2.toString());
+        operator=random.nextInt(4);
+        expression.append(" "+Operator[operator]+" "+num3.toString());
+        operator=random.nextInt(4);
+        expression.append(" "+Operator[operator]+" "+num4.toString()+'=');
+
+        System.out.print(expression);
+        return expression;
+    }
+
+    //æ ¹æ®ä¸­ç¼€è¡¨è¾¾å¼è½¬ä¸ºåç¼€è¡¨è¾¾å¼
+    public static StringBuffer Suffix(StringBuffer infix){
+        Stack <Character> stack=new Stack <Character>();
+        StringBuffer suffix=new StringBuffer();
+        int i=0,j=0;
+        char tempchar=infix.charAt(i++);
+        char tempchar2=' ';
+        while (tempchar!='='){
+            switch (tempchar){
+                case '(':
+                    stack.push(tempchar);
+                    tempchar=infix.charAt(i++);
                     break;
-            	case 4://Õæ·ÖÊı¼Ó·¨
-            		if(it.tadd()){T++;}
-            		else F++;
-            		break;
-            	case 5://Õæ·ÖÊı¼õ·¨
-            		if(it.tsub()){T++;}
-            		else{F++;}
-            		break;
-            	case 6://Õæ·ÖÊı³Ë·¨
-            		if(it.tmul()){T++;}
-            		else{F++;}
-            		break;	
-            	case 7://Õæ·ÖÊı³ı·¨
-            		if(it.tdiv()){T++;}
-            		else{F++;}
-            		break;	
+                case ')':
+                    while (stack.peek()!=')'){
+                        tempchar2=stack.pop();
+                        suffix.append(tempchar2);
+                        suffix.append(' ');
+                    }
+                    stack.pop();
+                    tempchar=infix.charAt(i++);
+                    break;
+                case '+':
+                case '-':
+                    while (!stack.empty()&&stack.peek()!='('){
+                        tempchar2=stack.pop();
+                        suffix.append(tempchar2);
+                        suffix.append(' ');
+                    }
+                    stack.push(tempchar);
+                    tempchar=infix.charAt(i++);
+                    break;
+                case 'Ã—':
+                case 'Ã·':
+                    Character ch=new Character(' ');
+                    if (!stack.empty()) {
+                        while((ch=stack.peek()).equals('Ã—')||(ch=stack.peek()).equals('Ã·'))
+                        {
+                            tempchar2=stack.pop();
+                            suffix.append(tempchar2);
+                            suffix.append(' ');
+                            if (stack.empty()) {
+                                break;
+                            }
+                        }
+                    }
+                    stack.push(tempchar);
+                    tempchar=infix.charAt(i++);
+                    break;
+                case ' ':
+                    tempchar=infix.charAt(i++);
+                    break;
+                default:
+                    while(tempchar<='9'&&tempchar>='0')
+                    {
+                        suffix.append(tempchar);
+                        tempchar=infix.charAt(i++);
+                    }
+                    suffix.append(' ');
+                    break;
+            }
+
+
+        }
+        while(!stack.empty())
+        {
+            tempchar2=stack.pop();
+            suffix.append(tempchar2);
+            suffix.append(' ');
+        }
+        //System.out.println(suffix);
+        suffix.append('\0');
+        return suffix;
+    }
+
+    //æ ¹æ®åç¼€è¡¨è¾¾å¼è®¡ç®—ç»“æœï¼ˆå°æ•°æ ¼å¼çš„Stringç±»å‹ï¼‰
+    public static String Calculate(StringBuffer suffix){
+        int i=0;
+        char tempchar=suffix.charAt(i++);
+        double []answer=new double[20];
+        int top=0,d;
+        while (tempchar!='\0'){
+            switch (tempchar){
+                case '+':
+                    answer[top-1]=answer[top-1]+answer[top];
+                    top--;
+                    tempchar=suffix.charAt(i++);
+                    break;
+                case '-':
+                    answer[top-1]=answer[top-1]-answer[top];
+                    top--;
+                    tempchar=suffix.charAt(i++);
+                    break;
+                case 'Ã—':
+                    answer[top-1]=answer[top-1]*answer[top];
+                    top--;
+                    tempchar=suffix.charAt(i++);
+                    break;
+                case 'Ã·':
+                    if(answer[top]!=0)answer[top-1]=answer[top-1]/answer[top];
+                    else
+                    {
+                        System.out.println("\n\té™¤é›¶é”™è¯¯!\n");
+                        System.exit(0);
+                    }
+                    top--;
+                    tempchar=suffix.charAt(i++);
+                    break;
+                case ' ':
+                    tempchar=suffix.charAt(i++);
+                    break;
+                default:
+                    d=0;
+                    while(tempchar>='0'&&tempchar<='9')
+                    {
+                        d=10*d+tempchar-'0';/*å°†æ•°å­—å­—ç¬¦è½¬åŒ–ä¸ºå¯¹åº”çš„æ•°å€¼*/
+                        tempchar=suffix.charAt(i++);
+                    }
+                    top++;
+                    answer[top]=d;
+                    break;
             }
         }
-        System.out.println("×ö¶ÔÁË"+T+"Ìâ");
-        System.out.println("×ö´íÁË"+F+"Ìâ");
-        float an = (float) T/N;
-        System.out.println("ÕıÈ·ÂÊÎª"+an*100+"%");
-	}
+        //System.out.println(answer[top]);
+        Double an=new Double(answer[top]);
+        String Answer=new String(an.toString());
+        return Answer;
+    }
 
-
-	@SuppressWarnings("resource")
-	private boolean div() {
-		int a = (int)(Math.random()*10)+1;
-        int b = (int)(Math.random()*10)+1;
-        String d1 = a+"/"+b;
-
-        d1=Economize(d1);
-        Double d2= (double)a/b;
-        Integer d3=a/b;
-        System.out.print(a+" ¡Â "+b+"=");
+    //åˆ¤æ–­ç”¨æˆ·çš„è¾“å…¥æ˜¯å¦æ­£ç¡®ï¼Œå¹¶è¾“å‡ºæ­£ç¡®ç­”æ¡ˆï¼ˆé”™è¯¯æ—¶è¾“å‡ºï¼‰
+    public static boolean  Judge(String answer){
         Scanner input=new Scanner(System.in);
-		String c1 =  input.next();
+        String UserAnswer=input.next();
 
-		if(c1.indexOf('/')!=-1){
-            c1=Economize(c1);
-            if(c1.equals(d1)){
-                System.out.println("true");
-                return true;
-            }else{
-                System.out.println("false");
-                return false;
-            }
-        }else if(c1.indexOf('q')!=-1){
-            System.exit(0);
-            return false;
-        } else if(c1.indexOf('.')!=-1){
-            if(c1.equals(d2.toString())){
-                System.out.println("true");
-                return true;
-            }else{
-                System.out.println("false");
-                return false;
-            }
-        }else{
-            if(c1.equals(d3.toString())){
-                System.out.println("true");
-                return true;
-            }else{
-                System.out.println("false");
-                return false;
-            }
-        }
-
-	}
-
-
-
-
-
-
-
-	@SuppressWarnings("resource")
-	private boolean add() {
-		int a = (int)(Math.random()*10)+1;
-        int b = (int)(Math.random()*10)+1;
-        int d = a+b;
-
-        System.out.print(a+"+"+b+"=");
-        Scanner input=new Scanner(System.in);
-        String ch=input.next();
-        if(ch.indexOf('q')!=-1){
-            System.exit(0);
-            return false;
-        }else{
-            int c = Integer.parseInt(ch);
-            if(c==d){
-                System.out.println("ture");
-                return true;
-            }else{
-                System.out.println("false");
-                return false;
-            }
-        }
-
-	}
-	
-	@SuppressWarnings("resource")
-	private boolean sub() {
-		int a = (int)(Math.random()*10)+1;
-        int b = (int)(Math.random()*10)+1;
-        int d = a-b;
-
-        System.out.print(a+"-"+b+"=");
-        Scanner input=new Scanner(System.in);
-        String ch=input.next();
-        if(ch.indexOf('q')!=-1){
-            System.exit(0);
-            return false;
-        }else{
-            int c = Integer.parseInt(ch);
-            if(c==d){
-                System.out.println("ture");
-                return true;
-            }else{
-                System.out.println("false");
-                return false;
-            }
-        }
-	}
-	
-	
-	@SuppressWarnings("resource")
-	private boolean mul() {
-		int a = (int)(Math.random()*10)+1;
-        int b = (int)(Math.random()*10)+1;
-        int d = a*b;
-
-        System.out.print(a+"*"+b+"=");
-        Scanner input=new Scanner(System.in);
-        String ch=input.next();
-        if(ch.indexOf('q')!=-1){
-            System.exit(0);
-            return false;
-        }else{
-            int c = Integer.parseInt(ch);
-            if(c==d){
-                System.out.println("ture");
-                return true;
-            }else{
-                System.out.println("false");
-                return false;
-            }
-        }
-	}
-	
-	private boolean tadd(){
-		int fz1,fm1,fz2,fm2;
-		while(true){
-            fz1=(int)(Math.random()*10)+1;
-            fm1=(int)(Math.random()*10)+1;
-            fz2=(int)(Math.random()*10)+1;
-            fm2=(int)(Math.random()*10)+1;
-            if(fz1<fm1&&fz2<fm2){
-                break;
-            }
-        }
-        String fzm1=fz1+"/"+fm1;
-        String fzm2=fz2+"/"+fm2;
-        fzm1=Economize(fzm1);
-        fzm2=Economize(fzm2);
-
-        System.out.print("("+fzm1+")"+"+"+"("+fzm2+")"+"=");
-        int tempfm = fm1*fm2;
-        int tempfz = fz1*fm2+fz2*fm1;
-        int max = tempfm;
-        String answer="";
-        String answer1="";
-        Double answer2=0.0;
-
-		if(tempfm<tempfz){
-            max=getmax(tempfz,tempfm);
-        }else if(tempfm>tempfz){
-            max=getmax(tempfm,tempfz);
-        }else{
-            answer="1";
-        }
-        tempfz=tempfz/max;
-        tempfm=tempfm/max;
-        if(0==tempfz%tempfm){
-            Integer s=tempfz/tempfm;//½á¹ûÎªÕûÊı
-            answer=s.toString();
-        }else{
-            answer1=tempfz+"/"+tempfm;
-            answer2=(double) tempfz/tempfm;
-        }
-
-        Scanner input=new Scanner(System.in);
-		String reanswer = input.next();
-
-        if(reanswer.indexOf('/')!=-1){
-            reanswer=Economize(reanswer);
-            if(reanswer.equals(answer1)){
-                System.out.println("true");
-                return true;
-            }else{
-                System.out.println("false");
-                return false;
-            }
-        }else if(reanswer.indexOf('q')!=-1){
-            System.exit(0);
-            return false;
-        }else if(reanswer.indexOf('.')!=-1){
-            if(reanswer.equals(answer2.toString())){
-                System.out.println("true");
-                return true;
-            }else{
-                System.out.println("false");
-                return false;
-            }
-        }else{
-            if(reanswer.equals(answer)){
-                System.out.println("true");
-                return true;
-            }else{
-                System.out.println("false");
-                return false;
-            }
-        }
-	}
-	
-	
-	private boolean tsub() {
-        int fz1,fm1,fz2,fm2;
+        //System.out.println(UserAnswer.matches(".\\p{Punct}.*"));//æ­£åˆ™è¡¨è¾¾å¼æµ‹è¯•ä½¿ç”¨
         while(true){
-            fz1=(int)(Math.random()*10)+1;
-            fm1=(int)(Math.random()*10)+1;
-            fz2=(int)(Math.random()*10)+1;
-            fm2=(int)(Math.random()*10)+1;
-            if(fz1<fm1&&fz2<fm2){
-                break;
-            }
-        }
-        String fzm1=fz1+"/"+fm1;
-        String fzm2=fz2+"/"+fm2;
-        fzm1=Economize(fzm1);
-        fzm2=Economize(fzm2);
-
-        System.out.print("("+fzm1+")"+"-"+"("+fzm2+")"+"=");
-        int tempfm = fm1*fm2;
-        int tempfz = fz1*fm2-fz2*fm1;
-        int max = tempfm;
-        String answer="";
-        String answer1="";
-        Double answer2=0.0;
-
-        if(tempfm<tempfz){
-            max=getmax(tempfz,tempfm);
-        }else if(tempfm>tempfz){
-            max=getmax(tempfm,tempfz);
-        }else{
-            answer="1";
-        }
-        tempfz=tempfz/max;
-        tempfm=tempfm/max;
-        if(0==tempfz%tempfm){
-            Integer s=tempfz/tempfm;//½á¹ûÎªÕûÊı
-            answer=s.toString();
-        }else{
-            answer1=tempfz+"/"+tempfm;
-            answer2=(double) tempfz/tempfm;
-        }
-
-        Scanner input=new Scanner(System.in);
-        String reanswer = input.next();
-
-        if(reanswer.indexOf('/')!=-1){
-            reanswer=Economize(reanswer);
-            if(reanswer.equals(answer1)){
-                System.out.println("true");
-                return true;
-            }else{
-                System.out.println("false");
-                return false;
-            }
-        }else if(reanswer.indexOf('q')!=-1){
-            System.exit(0);
-            return false;
-        }else if(reanswer.indexOf('.')!=-1){
-            if(reanswer.equals(answer2.toString())){
-                System.out.println("true");
-                return true;
-            }else{
-                System.out.println("false");
-                return false;
-            }
-        }else{
-            if(reanswer.equals(answer)){
-                System.out.println("true");
-                return true;
-            }else{
-                System.out.println("false");
-                return false;
-            }
-        }
-	}
-	
-	private boolean tmul() {
-        int fz1,fm1,fz2,fm2;
-        while(true){
-            fz1=(int)(Math.random()*10)+1;
-            fm1=(int)(Math.random()*10)+1;
-            fz2=(int)(Math.random()*10)+1;
-            fm2=(int)(Math.random()*10)+1;
-            if(fz1<fm1&&fz2<fm2){
-                break;
-            }
-        }
-        String fzm1=fz1+"/"+fm1;
-        String fzm2=fz2+"/"+fm2;
-        fzm1=Economize(fzm1);
-        fzm2=Economize(fzm2);
-
-        System.out.print("("+fzm1+")"+"*"+"("+fzm2+")"+"=");
-        int tempfm = fm1*fm2;
-        int tempfz = fz1*fz2;
-        int max = tempfm;
-        String answer="";
-        String answer1="";
-        Double answer2=0.0;
-
-        if(tempfm<tempfz){
-            max=getmax(tempfz,tempfm);
-        }else if(tempfm>tempfz){
-            max=getmax(tempfm,tempfz);
-        }else{
-            answer="1";
-        }
-        tempfz=tempfz/max;
-        tempfm=tempfm/max;
-        if(0==tempfz%tempfm){
-            Integer s=tempfz/tempfm;//½á¹ûÎªÕûÊı
-            answer=s.toString();
-        }else{
-            answer1=tempfz+"/"+tempfm;
-            answer2=(double) tempfz/tempfm;
-        }
-
-        Scanner input=new Scanner(System.in);
-        String reanswer = input.next();
-
-        if(reanswer.indexOf('/')!=-1){
-            reanswer=Economize(reanswer);
-            if(reanswer.equals(answer1)){
-                System.out.println("true");
-                return true;
-            }else{
-                System.out.println("false");
-                return false;
-            }
-        }else if(reanswer.indexOf('q')!=-1){
-            System.exit(0);
-            return false;
-        }else if(reanswer.indexOf('.')!=-1){
-            if(reanswer.equals(answer2.toString())){
-                System.out.println("true");
-                return true;
-            }else{
-                System.out.println("false");
-                return false;
-            }
-        }else{
-            if(reanswer.equals(answer)){
-                System.out.println("true");
-                return true;
-            }else{
-                System.out.println("false");
-                return false;
-            }
-        }
-	}
-
-	private boolean tdiv() {
-        int fz1,fm1,fz2,fm2;
-        while(true){
-            fz1=(int)(Math.random()*10)+1;
-            fm1=(int)(Math.random()*10)+1;
-            fz2=(int)(Math.random()*10)+1;
-            fm2=(int)(Math.random()*10)+1;
-            if(fz1<fm1&&fz2<fm2){
-                break;
-            }
-        }
-        String fzm1=fz1+"/"+fm1;
-        String fzm2=fz2+"/"+fm2;
-        fzm1=Economize(fzm1);
-        fzm2=Economize(fzm2);
-
-        System.out.print("("+fzm1+")"+"¡Â"+"("+fzm2+")"+"=");
-        int tempfm = fm1*fz2;
-        int tempfz = fz1*fm2;
-        int max = tempfm;
-        String answer="";
-        String answer1="";
-        Double answer2=0.0;
-
-        if(tempfm<tempfz){
-            max=getmax(tempfz,tempfm);
-        }else if(tempfm>tempfz){
-            max=getmax(tempfm,tempfz);
-        }else{
-            answer="1";
-        }
-        tempfz=tempfz/max;
-        tempfm=tempfm/max;
-        if(0==tempfz%tempfm){
-            Integer s=tempfz/tempfm;//½á¹ûÎªÕûÊı
-            answer=s.toString();
-        }else{
-            answer1=tempfz+"/"+tempfm;
-            answer2=(double) tempfz/tempfm;
-        }
-
-        Scanner input=new Scanner(System.in);
-        String reanswer = input.next();
-
-        if(reanswer.indexOf('/')!=-1){
-            reanswer=Economize(reanswer);
-            if(reanswer.equals(answer1)){
-                System.out.println("true");
-                return true;
-            }else{
-                System.out.println("false");
-                return false;
-            }
-        }else if(reanswer.indexOf('q')!=-1){
-            System.exit(0);
-            return false;
-        }else if(reanswer.indexOf('.')!=-1){
-            if(reanswer.equals(answer2.toString())){
-                System.out.println("true");
-                return true;
-            }else{
-                System.out.println("false");
-                return false;
-            }
-        }else{
-            if(reanswer.equals(answer)){
-                System.out.println("true");
-                return true;
-            }else{
-                System.out.println("false");
-                return false;
-            }
-        }
-	}
-
-	
-	//»ñµÃ×î´ó¹«ÒòÊıµÄ·½·¨
-    private static int getmax(int divisor, int dividend) {
-        try{
-            int remainder=divisor%dividend;
-            boolean i=true;
-            if(remainder==0){
-                i=false;
-            }
-            while(i){
-                divisor=dividend;
-                dividend=remainder;
-                remainder=divisor%dividend;
-                if(remainder==0){
-                    i=false;
+            if(UserAnswer.matches(".*[a-zA-Z]+.*")){//å«æœ‰å­—æ¯çš„ç”¨æˆ·è¾“å…¥
+                if(UserAnswer.indexOf("quit")!=-1){//ç¨‹åºé€€å‡ºè¾“å…¥
+                    System.out.println("ç¨‹åºé€€å‡º");
+                    System.out.println("æ„Ÿè°¢æ‚¨çš„ä½¿ç”¨ï¼");
+                    System.exit(0);
+                }else {//éæ³•çš„è¾“å…¥
+                    System.out.println("éæ³•è¾“å…¥ï¼Œè¯·å†æ¬¡è¾“å…¥");
+                    UserAnswer=input.next();
+                }
+            }else {//ä¸å«å­—æ¯çš„ç”¨æˆ·è¾“å…¥
+                if (UserAnswer.matches(".*\\p{Punct}.*")){//å«æœ‰æ ‡ç‚¹ç¬¦å·çš„ç”¨æˆ·è¾“å…¥(ç¬¦å·ï¼Œå°æ•°ç‚¹ï¼Œé™¤å·å’Œå…¶ä»–ç¬¦å·)
+                    if (UserAnswer.indexOf('/')!=-1){//å«æœ‰é™¤å·çš„ç”¨æˆ·è¾“å…¥
+                        int sign=UserAnswer.indexOf('/');
+                        String StringNumerator=UserAnswer.substring(0,sign);
+                        String StringDenominator=UserAnswer.substring(sign+1);
+                        Integer integerNumerator=Integer.parseInt(StringNumerator);
+                        Integer integerDenominator=Integer.parseInt(StringDenominator);
+                        if(integerDenominator==0){
+                            System.out.println("åˆ†æ¯ä¸èƒ½ä¸ºé›¶ï¼Œè¯·å†æ¬¡è¾“å…¥");
+                            UserAnswer=input.next();
+                        }else {
+                            Double an=new Double((double)integerNumerator/integerDenominator);
+                            String DisposeUserAnswer=new String(an.toString());
+                            if (DisposeUserAnswer.equals(answer)) {
+                                System.out.println("true");
+                                return true;
+                            }else {
+                                System.out.print("false ");
+                                System.out.println("æ­£ç¡®ç­”æ¡ˆæ˜¯ï¼š"+answer);
+                                return false;
+                            }
+                        }
+                    }else if(UserAnswer.indexOf('.')!=-1){//å«æœ‰å°æ•°ç‚¹çš„è¾“å…¥
+                        if(answer.equals(UserAnswer)){
+                            System.out.println("true");
+                            return true;
+                        }else {
+                            System.out.print("false ");
+                            System.out.println("æ­£ç¡®ç­”æ¡ˆæ˜¯ï¼š"+answer);
+                            return false;
+                        }
+                    }else if(UserAnswer.indexOf('-')!=-1||UserAnswer.indexOf('+')!=-1){
+                        int sign=answer.indexOf('.');
+                        String StringInteger =answer.substring(0,sign);
+                        Integer integer=Integer.parseInt(StringInteger);
+                        Integer integerUserAnswer=Integer.parseInt(UserAnswer);
+                        if(integer.equals(integerUserAnswer)){
+                            System.out.println("true");
+                            return true;
+                        }else{
+                            System.out.print("false ");
+                            System.out.println("æ­£ç¡®ç­”æ¡ˆæ˜¯ï¼š"+answer);
+                            return false;
+                        }
+                    }else {
+                        System.out.println("éæ³•è¾“å…¥ï¼Œè¯·å†æ¬¡è¾“å…¥");
+                        UserAnswer=input.next();
+                    }
+                }else {
+                    int sign=answer.indexOf('.');
+                    String StringInteger =answer.substring(0,sign);
+                    Integer integer=Integer.parseInt(StringInteger);
+                    Integer integerUserAnswer=Integer.parseInt(UserAnswer);
+                    if(integer.equals(integerUserAnswer)){
+                        System.out.println("true");
+                        return true;
+                    }else{
+                        System.out.print("false ");
+                        System.out.println("æ­£ç¡®ç­”æ¡ˆæ˜¯ï¼š"+answer);
+                        return false;
+                    }
                 }
             }
-
-        }catch (NumberFormatException e){
-            e.printStackTrace();
         }
 
-        return dividend;
-    }
-
-    private static String Economize(String ch){
-	    int sign=ch.indexOf('/');
-
-        Integer fz=1;Integer fm=1;
-        String fzz = ch.substring(0,sign);
-        String fmm = ch.substring(sign+1);
-        try {
-            fz = Integer.parseInt(fzz);
-            fm = Integer.parseInt(fmm);
-            if(fm==0){
-                System.out.println("ÊäÈë·ÖÄ¸ÎªÁã");
-                return "***";
-            }
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-        }
-        int max=getmax(fz,fm);
-
-	    String Newch;
-        Newch = (fz/max)+"/"+(fm/max);
-
-        return Newch;
 
     }
-
 }
 
