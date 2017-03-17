@@ -4,6 +4,9 @@ import java.util.Scanner;
 import java.util.Stack;
 
 public class Main {
+
+    public static int Tnumber=0;
+    public static int Fnumber=0;
     public static void main(String[] args) {
         Statistics();
 //        单独测试使用
@@ -15,8 +18,6 @@ public class Main {
 
     //题数统计函数
     public static void Statistics(){
-        int Tnumber=0;
-        int Fnumber=0;
         Scanner input=new Scanner(System.in);
         System.out.print("请输入您想要做的题数，按quit可退出：");
         String StringQnumber=input.next();
@@ -215,6 +216,10 @@ public class Main {
             if(UserAnswer.matches(".*[a-zA-Z]+.*")){//含有字母的用户输入
                 if(UserAnswer.indexOf("quit")!=-1){//程序退出输入
                     System.out.println("程序退出");
+                    System.out.println("正确题数："+Tnumber);
+                    System.out.println("错误题数："+Fnumber);
+                    Double accuracy=(double)Tnumber/(Tnumber+Fnumber)*100;
+                    System.out.println("正确率为"+accuracy+"%");
                     System.out.println("感谢您的使用！");
                     System.exit(0);
                 }else {//非法的输入
