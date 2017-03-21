@@ -48,8 +48,13 @@ public class Main {
 
         System.out.println("正确题数："+Tnumber);
         System.out.println("错误题数："+Fnumber);
-        Double accuracy=(double)Tnumber/(Tnumber+Fnumber)*100;
-        System.out.println("正确率为"+accuracy+"%");
+        if (Fnumber+Tnumber==0){
+            System.out.println("正确率为0%");
+        }else {
+            Double accuracy=(double)Tnumber/(Tnumber+Fnumber)*100;
+            System.out.println("正确率为"+accuracy+"%");
+        }
+
     }
 
     //生成四则混合运算
@@ -209,7 +214,7 @@ public class Main {
     //判断用户的输入是否正确，并输出正确答案（错误时输出）
     public static boolean  Judge(String answer){
         Scanner input=new Scanner(System.in);
-        String UserAnswer=input.next();
+        String UserAnswer=input.next();//接收用户输入
 
         //System.out.println(UserAnswer.matches(".\\p{Punct}.*"));//正则表达式测试使用
         while(true){
@@ -218,8 +223,12 @@ public class Main {
                     System.out.println("程序退出");
                     System.out.println("正确题数："+Tnumber);
                     System.out.println("错误题数："+Fnumber);
-                    Double accuracy=(double)Tnumber/(Tnumber+Fnumber)*100;
-                    System.out.println("正确率为"+accuracy+"%");
+                    if (Fnumber+Tnumber==0){
+                        System.out.println("正确率为0%");
+                    }else {
+                        Double accuracy=(double)Tnumber/(Tnumber+Fnumber)*100;
+                        System.out.println("正确率为"+accuracy+"%");
+                    }
                     System.out.println("感谢您的使用！");
                     System.exit(0);
                 }else {//非法的输入
@@ -228,7 +237,7 @@ public class Main {
                 }
             }else {//不含字母的用户输入
                 if (UserAnswer.matches(".*\\p{Punct}.*")){//含有标点符号的用户输入(符号，小数点，除号和其他符号)
-                    if (UserAnswer.indexOf('/')!=-1){//含有除号的用户输入
+                    if (UserAnswer.indexOf('/')!=-1&&(UserAnswer.indexOf('/')==UserAnswer.lastIndexOf('/'))){//含有除号的用户输入
                         int sign=UserAnswer.indexOf('/');
                         String StringNumerator=UserAnswer.substring(0,sign);
                         String StringDenominator=UserAnswer.substring(sign+1);
@@ -249,7 +258,7 @@ public class Main {
                                 return false;
                             }
                         }
-                    }else if(UserAnswer.indexOf('.')!=-1){//含有小数点的输入
+                    }else if(UserAnswer.indexOf('.')!=-1&&(UserAnswer.indexOf('.')==UserAnswer.lastIndexOf('.'))){//含有小数点的输入
                         if(answer.equals(UserAnswer)){
                             System.out.println("true");
                             return true;
@@ -258,24 +267,33 @@ public class Main {
                             System.out.println("正确答案是："+answer);
                             return false;
                         }
-                    }else if(UserAnswer.indexOf('-')!=-1||UserAnswer.indexOf('+')!=-1){
+                    }else if((UserAnswer.indexOf('-')==0||UserAnswer.indexOf('+')==0)
+                            &&(UserAnswer.lastIndexOf('-')<=0)
+                            &&(UserAnswer.lastIndexOf('+')<=0)){
                         int sign=answer.indexOf('.');
                         String StringInteger =answer.substring(0,sign);
                         Integer integer=Integer.parseInt(StringInteger);
-                        Integer integerUserAnswer=Integer.parseInt(UserAnswer);
-                        if(integer.equals(integerUserAnswer)){
-                            System.out.println("true");
-                            return true;
-                        }else{
-                            System.out.print("false ");
-                            System.out.println("正确答案是："+answer);
-                            return false;
+                        try {
+                            Integer integerUserAnswer=Integer.parseInt(UserAnswer);
+                            if(integer.equals(integerUserAnswer)){
+                                System.out.println("true");
+                                return true;
+                            }else{
+                                System.out.print("false ");
+                                System.out.println("正确答案是："+answer);
+                                return false;
+                            }
+                        }catch (Exception e){
+                            System.out.println("非法输入，请再次输入");
+                            UserAnswer=input.next();
                         }
+
+
                     }else {
                         System.out.println("非法输入，请再次输入");
                         UserAnswer=input.next();
                     }
-                }else {
+                }else { //整数输入
                     int sign=answer.indexOf('.');
                     String StringInteger =answer.substring(0,sign);
                     Integer integer=Integer.parseInt(StringInteger);
