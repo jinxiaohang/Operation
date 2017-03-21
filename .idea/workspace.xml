@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3733d8ed-5f6f-4c08-a2df-4f8c80fe061c" name="Default" comment="修复——主动退出时，正确率的显示。">
+    <list default="true" id="3733d8ed-5f6f-4c08-a2df-4f8c80fe061c" name="Default" comment="修复——用户输入多个正负号、小数点（+，-，.）判定为非法输入">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/Main.java" afterPath="$PROJECT_DIR$/src/com/Main.java" />
     </list>
@@ -30,12 +30,16 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="398">
-              <caret line="214" column="47" lean-forward="false" selection-start-line="214" selection-start-column="47" selection-end-line="214" selection-end-column="47" />
+            <state relative-caret-position="810">
+              <caret line="132" column="19" lean-forward="true" selection-start-line="132" selection-start-column="19" selection-end-line="132" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#Equation#0;class#Main#0" expanded="false" />
+                <element signature="method#Statistics#0;class#Main#0" expanded="false" />
+                <element signature="method#Equation1#0;class#Main#0" expanded="false" />
+                <element signature="method#Equation2#0;class#Main#0" expanded="false" />
+                <element signature="method#Equation3#0;class#Main#0" expanded="false" />
                 <element signature="method#Suffix#0;class#Main#0" expanded="false" />
+                <element signature="e#4936#4947#0" expanded="true" />
                 <element signature="method#Calculate#0;class#Main#0" expanded="false" />
                 <element signature="method#Judge#0;class#Main#0" expanded="false" />
               </folding>
@@ -596,7 +600,7 @@
       <workItem from="1489667738008" duration="8563000" />
       <workItem from="1489716284509" duration="15583000" />
       <workItem from="1489742282314" duration="1239000" />
-      <workItem from="1490092223242" duration="1782000" />
+      <workItem from="1490092223242" duration="4332000" />
     </task>
     <task id="LOCAL-00001" summary="修复：真分数计算时用户无法判断运算先后顺序 #8">
       <created>1488417497469</created>
@@ -661,11 +665,18 @@
       <option name="project" value="LOCAL" />
       <updated>1489737414976</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="修复——用户输入多个正负号、小数点（+，-，.）判定为非法输入">
+      <created>1490094096781</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1490094096781</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50712000" />
+    <option name="totallyTimeSpent" value="53262000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
@@ -758,11 +769,12 @@
     <MESSAGE value="修复:N/0、%、N//N等一些非法输入情况下程序继续运行（对输入直接判错）" />
     <MESSAGE value="功能升级——整数四则混合运算（三个运算符）" />
     <MESSAGE value="修复——主动退出时，正确率的显示。" />
-    <option name="LAST_COMMIT_MESSAGE" value="修复——主动退出时，正确率的显示。" />
+    <MESSAGE value="修复——用户输入多个正负号、小数点（+，-，.）判定为非法输入" />
+    <option name="LAST_COMMIT_MESSAGE" value="修复——用户输入多个正负号、小数点（+，-，.）判定为非法输入" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="29" />
+      <option name="time" value="30" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -777,8 +789,12 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#Equation#0;class#Main#0" expanded="false" />
+            <element signature="method#Statistics#0;class#Main#0" expanded="false" />
+            <element signature="method#Equation1#0;class#Main#0" expanded="false" />
+            <element signature="method#Equation2#0;class#Main#0" expanded="false" />
+            <element signature="method#Equation3#0;class#Main#0" expanded="false" />
             <element signature="method#Suffix#0;class#Main#0" expanded="false" />
+            <element signature="e#4936#4947#0" expanded="true" />
             <element signature="method#Calculate#0;class#Main#0" expanded="false" />
             <element signature="method#Judge#0;class#Main#0" expanded="false" />
           </folding>
@@ -791,8 +807,12 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#Equation#0;class#Main#0" expanded="false" />
+            <element signature="method#Statistics#0;class#Main#0" expanded="false" />
+            <element signature="method#Equation1#0;class#Main#0" expanded="false" />
+            <element signature="method#Equation2#0;class#Main#0" expanded="false" />
+            <element signature="method#Equation3#0;class#Main#0" expanded="false" />
             <element signature="method#Suffix#0;class#Main#0" expanded="false" />
+            <element signature="e#4936#4947#0" expanded="true" />
             <element signature="method#Calculate#0;class#Main#0" expanded="false" />
             <element signature="method#Judge#0;class#Main#0" expanded="false" />
           </folding>
@@ -805,8 +825,12 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#Equation#0;class#Main#0" expanded="false" />
+            <element signature="method#Statistics#0;class#Main#0" expanded="false" />
+            <element signature="method#Equation1#0;class#Main#0" expanded="false" />
+            <element signature="method#Equation2#0;class#Main#0" expanded="false" />
+            <element signature="method#Equation3#0;class#Main#0" expanded="false" />
             <element signature="method#Suffix#0;class#Main#0" expanded="false" />
+            <element signature="e#4936#4947#0" expanded="true" />
             <element signature="method#Calculate#0;class#Main#0" expanded="false" />
             <element signature="method#Judge#0;class#Main#0" expanded="false" />
           </folding>
@@ -834,8 +858,12 @@
           <caret line="9" column="21" lean-forward="false" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#Equation#0;class#Main#0" expanded="false" />
+            <element signature="method#Statistics#0;class#Main#0" expanded="false" />
+            <element signature="method#Equation1#0;class#Main#0" expanded="false" />
+            <element signature="method#Equation2#0;class#Main#0" expanded="false" />
+            <element signature="method#Equation3#0;class#Main#0" expanded="false" />
             <element signature="method#Suffix#0;class#Main#0" expanded="false" />
+            <element signature="e#4936#4947#0" expanded="true" />
             <element signature="method#Calculate#0;class#Main#0" expanded="false" />
             <element signature="method#Judge#0;class#Main#0" expanded="false" />
           </folding>
@@ -855,8 +883,12 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#Equation#0;class#Main#0" expanded="false" />
+            <element signature="method#Statistics#0;class#Main#0" expanded="false" />
+            <element signature="method#Equation1#0;class#Main#0" expanded="false" />
+            <element signature="method#Equation2#0;class#Main#0" expanded="false" />
+            <element signature="method#Equation3#0;class#Main#0" expanded="false" />
             <element signature="method#Suffix#0;class#Main#0" expanded="false" />
+            <element signature="e#4936#4947#0" expanded="true" />
             <element signature="method#Calculate#0;class#Main#0" expanded="false" />
             <element signature="method#Judge#0;class#Main#0" expanded="false" />
           </folding>
@@ -869,8 +901,12 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#Equation#0;class#Main#0" expanded="false" />
+            <element signature="method#Statistics#0;class#Main#0" expanded="false" />
+            <element signature="method#Equation1#0;class#Main#0" expanded="false" />
+            <element signature="method#Equation2#0;class#Main#0" expanded="false" />
+            <element signature="method#Equation3#0;class#Main#0" expanded="false" />
             <element signature="method#Suffix#0;class#Main#0" expanded="false" />
+            <element signature="e#4936#4947#0" expanded="true" />
             <element signature="method#Calculate#0;class#Main#0" expanded="false" />
             <element signature="method#Judge#0;class#Main#0" expanded="false" />
           </folding>
@@ -883,8 +919,12 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#Equation#0;class#Main#0" expanded="false" />
+            <element signature="method#Statistics#0;class#Main#0" expanded="false" />
+            <element signature="method#Equation1#0;class#Main#0" expanded="false" />
+            <element signature="method#Equation2#0;class#Main#0" expanded="false" />
+            <element signature="method#Equation3#0;class#Main#0" expanded="false" />
             <element signature="method#Suffix#0;class#Main#0" expanded="false" />
+            <element signature="e#4936#4947#0" expanded="true" />
             <element signature="method#Calculate#0;class#Main#0" expanded="false" />
             <element signature="method#Judge#0;class#Main#0" expanded="false" />
           </folding>
@@ -897,8 +937,12 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#Equation#0;class#Main#0" expanded="false" />
+            <element signature="method#Statistics#0;class#Main#0" expanded="false" />
+            <element signature="method#Equation1#0;class#Main#0" expanded="false" />
+            <element signature="method#Equation2#0;class#Main#0" expanded="false" />
+            <element signature="method#Equation3#0;class#Main#0" expanded="false" />
             <element signature="method#Suffix#0;class#Main#0" expanded="false" />
+            <element signature="e#4936#4947#0" expanded="true" />
             <element signature="method#Calculate#0;class#Main#0" expanded="false" />
             <element signature="method#Judge#0;class#Main#0" expanded="false" />
           </folding>
@@ -911,8 +955,12 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#Equation#0;class#Main#0" expanded="false" />
+            <element signature="method#Statistics#0;class#Main#0" expanded="false" />
+            <element signature="method#Equation1#0;class#Main#0" expanded="false" />
+            <element signature="method#Equation2#0;class#Main#0" expanded="false" />
+            <element signature="method#Equation3#0;class#Main#0" expanded="false" />
             <element signature="method#Suffix#0;class#Main#0" expanded="false" />
+            <element signature="e#4936#4947#0" expanded="true" />
             <element signature="method#Calculate#0;class#Main#0" expanded="false" />
             <element signature="method#Judge#0;class#Main#0" expanded="false" />
           </folding>
@@ -932,8 +980,12 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#Equation#0;class#Main#0" expanded="false" />
+            <element signature="method#Statistics#0;class#Main#0" expanded="false" />
+            <element signature="method#Equation1#0;class#Main#0" expanded="false" />
+            <element signature="method#Equation2#0;class#Main#0" expanded="false" />
+            <element signature="method#Equation3#0;class#Main#0" expanded="false" />
             <element signature="method#Suffix#0;class#Main#0" expanded="false" />
+            <element signature="e#4936#4947#0" expanded="true" />
             <element signature="method#Calculate#0;class#Main#0" expanded="false" />
             <element signature="method#Judge#0;class#Main#0" expanded="false" />
           </folding>
@@ -946,8 +998,12 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#Equation#0;class#Main#0" expanded="false" />
+            <element signature="method#Statistics#0;class#Main#0" expanded="false" />
+            <element signature="method#Equation1#0;class#Main#0" expanded="false" />
+            <element signature="method#Equation2#0;class#Main#0" expanded="false" />
+            <element signature="method#Equation3#0;class#Main#0" expanded="false" />
             <element signature="method#Suffix#0;class#Main#0" expanded="false" />
+            <element signature="e#4936#4947#0" expanded="true" />
             <element signature="method#Calculate#0;class#Main#0" expanded="false" />
             <element signature="method#Judge#0;class#Main#0" expanded="false" />
           </folding>
@@ -960,8 +1016,12 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#Equation#0;class#Main#0" expanded="false" />
+            <element signature="method#Statistics#0;class#Main#0" expanded="false" />
+            <element signature="method#Equation1#0;class#Main#0" expanded="false" />
+            <element signature="method#Equation2#0;class#Main#0" expanded="false" />
+            <element signature="method#Equation3#0;class#Main#0" expanded="false" />
             <element signature="method#Suffix#0;class#Main#0" expanded="false" />
+            <element signature="e#4936#4947#0" expanded="true" />
             <element signature="method#Calculate#0;class#Main#0" expanded="false" />
             <element signature="method#Judge#0;class#Main#0" expanded="false" />
           </folding>
@@ -974,8 +1034,12 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#Equation#0;class#Main#0" expanded="false" />
+            <element signature="method#Statistics#0;class#Main#0" expanded="false" />
+            <element signature="method#Equation1#0;class#Main#0" expanded="false" />
+            <element signature="method#Equation2#0;class#Main#0" expanded="false" />
+            <element signature="method#Equation3#0;class#Main#0" expanded="false" />
             <element signature="method#Suffix#0;class#Main#0" expanded="false" />
+            <element signature="e#4936#4947#0" expanded="true" />
             <element signature="method#Calculate#0;class#Main#0" expanded="false" />
             <element signature="method#Judge#0;class#Main#0" expanded="false" />
           </folding>
@@ -988,8 +1052,12 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#Equation#0;class#Main#0" expanded="false" />
+            <element signature="method#Statistics#0;class#Main#0" expanded="false" />
+            <element signature="method#Equation1#0;class#Main#0" expanded="false" />
+            <element signature="method#Equation2#0;class#Main#0" expanded="false" />
+            <element signature="method#Equation3#0;class#Main#0" expanded="false" />
             <element signature="method#Suffix#0;class#Main#0" expanded="false" />
+            <element signature="e#4936#4947#0" expanded="true" />
             <element signature="method#Calculate#0;class#Main#0" expanded="false" />
             <element signature="method#Judge#0;class#Main#0" expanded="false" />
           </folding>
@@ -1024,13 +1092,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://F:/jdk-8u91-windows-x64/src.zip!/java/util/Stack.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2106">
-          <caret line="101" column="0" lean-forward="false" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://F:/jdk-8u91-windows-x64/src.zip!/java/lang/StringBuffer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="27">
@@ -1053,14 +1114,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://F:/jdk-8u91-windows-x64/src.zip!/java/util/Stack.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="101" column="0" lean-forward="false" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="214" column="47" lean-forward="false" selection-start-line="214" selection-start-column="47" selection-end-line="214" selection-end-column="47" />
+        <state relative-caret-position="810">
+          <caret line="132" column="19" lean-forward="true" selection-start-line="132" selection-start-column="19" selection-end-line="132" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#Equation#0;class#Main#0" expanded="false" />
+            <element signature="method#Statistics#0;class#Main#0" expanded="false" />
+            <element signature="method#Equation1#0;class#Main#0" expanded="false" />
+            <element signature="method#Equation2#0;class#Main#0" expanded="false" />
+            <element signature="method#Equation3#0;class#Main#0" expanded="false" />
             <element signature="method#Suffix#0;class#Main#0" expanded="false" />
+            <element signature="e#4936#4947#0" expanded="true" />
             <element signature="method#Calculate#0;class#Main#0" expanded="false" />
             <element signature="method#Judge#0;class#Main#0" expanded="false" />
           </folding>

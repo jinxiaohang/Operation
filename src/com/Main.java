@@ -9,6 +9,9 @@ public class Main {
     public static int Fnumber=0;
     public static void main(String[] args) {
         Statistics();
+
+        //Suffix(Equation3());
+
 //        单独测试使用
 //        StringBuffer suffix;
 //        suffix=Suffix(Equation());
@@ -28,8 +31,20 @@ public class Main {
             }else if(StringQnumber.matches(".*[0-9]+.*")){
                 Integer Qnumber=Integer.parseInt(StringQnumber);
                 while (Qnumber>0){
-                    StringBuffer suffix;
-                    suffix=Suffix(Equation());
+                    StringBuffer suffix=new StringBuffer();
+                    Random random=new Random();
+                    int num=random.nextInt(3);//随机产生题型
+                    switch (num){
+                        case 0:
+                            suffix=Suffix(Equation1());
+                            break;
+                        case 1:
+                            suffix=Suffix(Equation2());
+                            break;
+                        case 2:
+                            suffix=Suffix(Equation3());
+                            break;
+                    }
                     String answer=Calculate(suffix);
                     if (Judge(answer)){
                         Tnumber++;
@@ -57,8 +72,8 @@ public class Main {
 
     }
 
-    //生成四则混合运算
-    public static StringBuffer Equation(){
+    //生成整数四则混合运算
+    public static StringBuffer Equation1(){
         Random random=new Random();
         char [] Operator={'+','-','×','÷'};
         Integer num1;
@@ -82,6 +97,61 @@ public class Main {
         return expression;
     }
 
+    //生成带分数四则混合运算
+    public static StringBuffer Equation2(){
+        Random random=new Random();
+        char [] Operator={'+','-','×','÷'};
+        Integer num1;
+        Integer num2;
+        Integer num3;
+        Integer num4;
+        int operator;
+        num1 = random.nextInt(10)+1;
+        num2 = random.nextInt(10)+1;
+        num3 = random.nextInt(10) + 1;
+        num4 = random.nextInt(10) + 1;
+
+        while (true){
+            if (num3>=num4){
+                num3 = random.nextInt(10) + 1;
+                num4 = random.nextInt(10) + 1;
+            }else {
+                break;
+            }
+        }
+        operator=random.nextInt(4);
+
+        StringBuffer expression=new StringBuffer(num1.toString()+" "+Operator[operator]+" "+num2.toString());
+        operator=random.nextInt(4);
+        expression.append(" "+Operator[operator]+" "+num3.toString());
+        expression.append('/'+num4.toString()+'=');
+
+        System.out.print(expression);
+        return expression;
+    }
+
+    //生成整数带括号四则混合运算
+    public static StringBuffer Equation3(){
+        Random random=new Random();
+        char [] Operator1={'+','-'};
+        char [] Operator2={'×','÷'};
+        Integer num1;
+        Integer num2;
+        Integer num3;
+        int operator;
+        num1 = random.nextInt(10)+1;
+        num2 = random.nextInt(10)+1;
+        num3 = random.nextInt(10) + 1;
+        operator=random.nextInt(2);
+
+        StringBuffer expression=new StringBuffer("("+num1.toString()+" "+Operator1[operator]+" "+num2.toString()+")");
+        operator=random.nextInt(2);
+        expression.append(" "+Operator2[operator]+" "+num3.toString()+"=");
+
+        System.out.print(expression);
+        return expression;
+    }
+
     //根据中缀表达式转为后缀表达式
     public static StringBuffer Suffix(StringBuffer infix){
         Stack <Character> stack=new Stack <Character>();
@@ -96,12 +166,17 @@ public class Main {
                     tempchar=infix.charAt(i++);
                     break;
                 case ')':
-                    while (stack.peek()!=')'){
+                    while (stack.peek()!='('){
                         tempchar2=stack.pop();
                         suffix.append(tempchar2);
                         suffix.append(' ');
+                        if (stack.empty()) {
+                            break;
+                        }
                     }
-                    stack.pop();
+                    if (!stack.empty()) {
+                        stack.pop();
+                    }
                     tempchar=infix.charAt(i++);
                     break;
                 case '+':
@@ -115,6 +190,7 @@ public class Main {
                     tempchar=infix.charAt(i++);
                     break;
                 case '×':
+                case '/':
                 case '÷':
                     Character ch=new Character(' ');
                     if (!stack.empty()) {
@@ -152,7 +228,7 @@ public class Main {
             suffix.append(tempchar2);
             suffix.append(' ');
         }
-        //System.out.println(suffix);
+        //System.out.println(suffix);//测试后缀表达式使用
         suffix.append('\0');
         return suffix;
     }
@@ -180,6 +256,7 @@ public class Main {
                     top--;
                     tempchar=suffix.charAt(i++);
                     break;
+                case '/':
                 case '÷':
                     if(answer[top]!=0)answer[top-1]=answer[top-1]/answer[top];
                     else
